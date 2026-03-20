@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日查询系统 | ZJU Style</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎂 生日查询系统</h1>
+            <p>输入信息，查找那份专属的惊喜</p>
+        </header>
+
+        <section class="filter-card">
+            <!-- 1. 届别 -->
+            <div class="filter-group">
+                <label>1. 届别 / 年份</label>
+                <select id="yearSelect">
+                    <option value="全部" selected>全部年份 (含24及25届)</option>
+                    <option value="24">2024年 (24)</option>
+                    <option value="25">2025年 (25)</option>
+                </select>
+            </div>
+
+            <!-- 2. 方式：已左右互换 -->
+            <div class="filter-group">
+                <label>2. 查找方式</label>
+                <div class="radio-group" id="searchMode">
+                    <button class="btn-toggle" data-mode="month">按月份查找</button>
+                    <button class="btn-toggle active" data-mode="nickname">按昵称查找</button>
+                </div>
+            </div>
+
+            <!-- 3 & 4 昵称模式选项 -->
+            <div id="nicknameOptions">
+                <div class="filter-group">
+                    <label>3. 按部门查找</label>
+                    <select id="deptSelect">
+                        <option value="全部">全部部门</option>
+                        <option value="队长团">队长团</option>
+                        <option value="人力资源部">人力资源部</option>
+                        <option value="新闻宣传部">新闻宣传部</option>
+                        <option value="联络推广部">联络推广部</option>
+                        <option value="培训拓展部">培训拓展部</option>
+                        <option value="实践调研部">实践调研部</option>
+                        <option value="综合管理部">综合管理部</option>
+                        <option value="项目策划部">项目策划部</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>4. 输入昵称</label>
+                    <input type="text" id="nameInput" placeholder="请输入完整或部分昵称...">
+                </div>
+            </div>
+
+            <!-- 月份模式选项 -->
+            <div id="monthOptions" style="display: none;">
+                <div class="filter-group">
+                    <label>3. 选择月份 (可多选)</label>
+                    <div id="monthGrid" class="month-grid"></div>
+                </div>
+            </div>
+
+            <button id="searchBtn" class="btn-primary">立即查询</button>
+        </section>
+
+        <section id="resultStats" class="stats-text"></section>
+        <section id="resultsContainer" class="results-grid">
+            <div class="empty-state">等待查询...</div>
+        </section>
+    </div>
+
+    <!-- 详情弹窗 -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

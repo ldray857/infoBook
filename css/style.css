@@ -1,0 +1,362 @@
+:root {
+    --zju-blue: #003e8c;
+    --zju-blue-light: #e6ecf4;
+    --text-main: #333;
+    --text-sub: #666;
+    --bg-color: #f4f7f9; /* 稍微加深一点背景，让白色卡片更凸显 */
+    --white: #ffffff;
+    --border-color: #ddd;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: var(--zju-blue);
+    margin-bottom: 5px;
+}
+
+/* 筛选卡片 */
+.filter-card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 62, 140, 0.08); /* 统一采用浙大蓝风格的阴影 */
+    border-top: 5px solid var(--zju-blue);
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--zju-blue);
+    font-size: 15px;
+}
+
+/* 按钮组样式 */
+.radio-group {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-toggle {
+    flex: 1; /* 让按钮等宽 */
+    padding: 10px 16px;
+    border: 1px solid var(--zju-blue);
+    background: white;
+    color: var(--zju-blue);
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-toggle.active {
+    background: var(--zju-blue);
+    color: white;
+    font-weight: bold;
+}
+
+/* 输入框与选择框 */
+input[type="text"], select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus, select:focus {
+    outline: none;
+    border-color: var(--zju-blue);
+    box-shadow: 0 0 0 3px rgba(0, 62, 140, 0.15);
+}
+
+/* 月份网格 - 响应式优化 */
+.month-grid {
+    display: grid;
+    /* 自动适应屏幕宽度，最小宽度 65px */
+    grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); 
+    gap: 10px;
+}
+
+.month-chip {
+    padding: 10px 5px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    background: #fafafa;
+    font-size: 14px;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.month-chip.selected {
+    background: var(--zju-blue-light);
+    border-color: var(--zju-blue);
+    color: var(--zju-blue);
+    font-weight: bold;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: var(--zju-blue);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #002d66;
+}
+
+/* 结果展示 */
+.results-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.result-card {
+    background: white;
+    padding: 20px 15px;
+    border-radius: 10px;
+    border: 1px solid #eef2f7;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    transition: transform 0.2s;
+}
+
+.result-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 62, 140, 0.08);
+}
+
+.result-card .name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--zju-blue);
+}
+
+.result-card .date {
+    margin-top: 10px;
+    font-size: 15px;
+    color: var(--text-sub);
+}
+
+.stats-text {
+    margin-top: 25px;
+    color: var(--text-sub);
+    font-size: 14px;
+    text-align: center;
+}
+
+.empty-state {
+    text-align: center;
+    color: #999;
+    padding: 40px;
+    grid-column: 1 / -1; /* 占据整行 */
+}
+/* 农历小标签样式 */
+.lunar-tag {
+    background: #fff3e0;
+    color: #ff9800;
+    font-size: 11px;
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin-left: 5px;
+    border: 1px solid #ffe0b2;
+}
+
+/* 部门信息样式 */
+.part-info {
+    font-size: 13px;
+    color: var(--zju-blue);
+    margin-top: 10px;
+    background: var(--zju-blue-light);
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    opacity: 0.9;
+}
+
+/* 结果统计文字居中 */
+.stats-text {
+    text-align: center;
+    margin: 20px 0;
+    font-weight: 500;
+}
+
+/* ... 保持你之前的代码，添加或覆盖以下部分 ... */
+
+/* 结果卡片增强 */
+.result-card {
+    position: relative; /* 为 Today 标签定位 */
+    background: white;
+    padding: 20px 15px;
+    border-radius: 10px;
+    border: 1px solid #eef2f7;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 62, 140, 0.1);
+}
+
+.result-card .name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--zju-blue);
+    /* 【新增】处理超长昵称，防止卡片被撑破 */
+    word-break: break-all; 
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+/* 今日生日高亮 */
+.today-highlight {
+    border: 2px solid #ce943e !important; /* 金色边框 */
+    background: linear-gradient(145deg, #ffffff, #fff9f0);
+}
+
+.today-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ce943e;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 部门信息 */
+.part-info {
+    font-size: 12px;
+    color: var(--zju-blue);
+    margin-top: 10px;
+    background: var(--zju-blue-light);
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    opacity: 0.8;
+    align-self: center; /* 居中显示 */
+}
+
+/* 此处包含你之前所有的 CSS，重点确保包含以下新增部分 */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 85%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+}
+
+.detail-item {
+    margin: 12px 0;
+    border-bottom: 1px solid #f5f5f5;
+    padding-bottom: 8px;
+    font-size: 16px;
+}
+
+.detail-label {
+    color: var(--zju-blue);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.today-highlight {
+    border: 2px solid #ce943e !important;
+    background: linear-gradient(145deg, #ffffff, #fffdfa) !important;
+}
+
+.today-badge {
+    position: absolute;
+    top: -10px; right: -5px;
+    background: #ce943e;
+    color: white;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* 适配手机端：屏幕宽度小于 600px 时 */
+@media (max-width: 600px) {
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr); /* 手机端一行显示两个卡片 */
+        gap: 10px;
+    }
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+        padding: 20px;
+    }
+    .month-grid {
+        grid-template-columns: repeat(4, 1fr); /* 手机端月份按钮一行4个 */
+    }
+}
