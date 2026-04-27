@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <title>身份校验</title>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-10 shadow-2xl rounded-xl w-[500px] border border-gray-200">
+        <div class="bg-blue-600 text-white p-6 -mx-10 -mt-10 rounded-t-xl mb-8">
+            <p class="text-base opacity-90">请选出图中所有的</p>
+            <h2 class="text-2xl font-bold"> GAY </h2>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-2 mb-8">
+            <div class="captcha-box h-32 bg-gray-200 cursor-pointer overflow-hidden hover:opacity-90" onclick="toggleSelect(this)">
+                <img src="../assets/images/01.jpg" alt="老大1" class="w-full h-full object-cover">
+            </div>
+            <div class="captcha-box h-32 bg-gray-200 cursor-pointer overflow-hidden hover:opacity-90" onclick="toggleSelect(this)">
+                <img src="../assets/images/02.jpg" alt="老大2" class="w-full h-full object-cover">
+            </div>
+            <div class="captcha-box h-32 bg-gray-200 cursor-pointer overflow-hidden hover:opacity-90" onclick="toggleSelect(this)">
+                <img src="../assets/images/03.jpg" alt="老大3" class="w-full h-full object-cover">
+            </div>
+
+            <div class="captcha-box h-32 bg-gray-200 cursor-pointer overflow-hidden hover:opacity-90" onclick="toggleSelect(this)">
+                <img src="../assets/images/04.jpg" alt="老大4" class="w-full h-full object-cover">
+            </div>
+            <div class="captcha-box selected h-32 bg-gray-200 cursor-pointer overflow-hidden hover:opacity-90" onclick="toggleSelect(this)">
+                <img src="../assets/images/csb.jpg" alt="王" class="w-full h-full object-cover">
+            </div>
+            <div class="captcha-box h-32 bg-gray-200 cursor-pointer overflow-hidden hover:opacity-90" onclick="toggleSelect(this)">
+                <img src="../assets/images/05.jpg" alt="老大5" class="w-full h-full object-cover">
+            </div>
+
+            <div class="captcha-box h-32 bg-gray-200 cursor-pointer overflow-hidden hover:opacity-90" onclick="toggleSelect(this)">
+                <img src="../assets/images/06.jpg" alt="老大6" class="w-full h-full object-cover">
+            </div>
+            <div class="captcha-box h-32 bg-gray-200 cursor-pointer overflow-hidden hover:opacity-90" onclick="toggleSelect(this)">
+                <img src="../assets/images/07.jpg" alt="老大7" class="w-full h-full object-cover">
+            </div>
+            <div class="captcha-box h-32 bg-gray-200 cursor-pointer overflow-hidden hover:opacity-90" onclick="toggleSelect(this)">
+                <img src="../assets/images/08.jpg" alt="老大8" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <button onclick="verify()" class="w-full bg-blue-600 text-white py-4 text-lg font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-colors">
+            立即验证
+        </button>
+    </div>
+
+    <script>
+        // 选中切换逻辑
+        function toggleSelect(element) {
+            // 切换在 game.css 中定义的 .selected 类
+            element.classList.toggle('selected');
+        }
+
+        function verify() {
+            Swal.fire({
+                title: '验证失败！',
+                text: '疑似奶龙，需前往大调查。',
+                icon: 'error',
+                confirmButtonText: '我才是奶龙',
+                confirmButtonColor: '#2563eb'
+            }).then(() => {
+                window.location.href = 'step3-museum.html';
+            });
+        }
+    </script>
+</body>
+</html>

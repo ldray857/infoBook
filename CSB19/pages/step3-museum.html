@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/glitch.css">
+    <title>那些打过的</title>
+</head>
+<body class="bg-zinc-950 text-white flex flex-col items-center justify-center min-h-screen p-6">
+    <h1 class="text-5xl font-black text-red-600 mb-12 glitch" data-text="王在鹿">王在鹿</h1>
+    
+    <div class="max-w-2xl bg-zinc-900 p-8 rounded-2xl border border-red-900/50 shadow-2xl text-center">
+        <p class="text-xl mb-6 text-zinc-400">这里记录了一些csb犯下的罪行...</p>
+        
+        <div class="space-y-4 text-left border-l-4 border-red-600 pl-6 mb-10">
+            <p>● <span class="text-red-500">91</span>躺着🦌，玩偶姐姐，橘子猫，东北雨姐</p>
+            <p>● <span class="text-red-500">92：</span>坐着🦌，老大的黑丝</p>
+            <p>● <span class="text-red-500">93：</span>站起来🦌，黑猪姚滨的雷</p>
+            <p>● <span class="text-red-500">94：</span>飞起来🦌，程涛的白袜</p>
+            <p>● <span class="text-red-500">95：</span>路上走🦌，司空真的凶兆，风暴龙王</p>
+        </div>
+
+        <button onclick="confirmGift()" class="px-10 py-4 bg-red-600 hover:bg-red-500 rounded-full font-bold text-xl transition-all animate-bounce">
+            我再也不乱路了🤚😭🤚
+        </button>
+    </div>
+
+    <script>
+        function confirmGift() {
+            Swal.fire({
+                title: '莫急啊',
+                text: '前方巨🦌，请做好心理准备！',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '真不急',
+                cancelButtonText: 'hei死了'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'step4-boss-fight.html';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

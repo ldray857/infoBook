@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>系统重置中...</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body class="bg-[#0078D7] text-white overflow-hidden cursor-default select-none">
+    <div class="flex flex-col items-center justify-center h-screen p-10 text-left">
+        <div class="max-w-4xl">
+            <div class="text-9xl mb-10 font-light">:(</div>
+            <h1 class="text-4xl mb-6 font-bold">你的设备遇到问题，需要导一发。</h1>
+            <p class="text-2xl mb-10">完成进度: <span id="progress">0</span>%</p>
+            
+            <div class="space-y-2 opacity-80 text-lg">
+                <p>终止代码: 糖心_黄瓜?茄子:草莓+海角</p>
+                <p>用户标识: 91=78+13</p>
+                <p class="pt-4">底层协议正在重写，🦌值校验失败，请手动修复核心玩偶姐姐。</p>
+            </div>
+
+            <button id="fixBtn" class="mt-16 bg-white text-[#0078D7] px-10 py-4 rounded font-black shadow-2xl absolute transition-all duration-75">
+                立即🦌一把
+            </button>
+        </div>
+    </div>
+
+    <script src="js/jump-logic.js"></script>
+    <script>
+        // 进度条伪装逻辑
+        let p = 0;
+        const timer = setInterval(() => {
+            if(p < 99) {
+                p += Math.floor(Math.random() * 2);
+                document.getElementById('progress').innerText = p;
+            }
+        }, 200);
+
+        // 修复点：显式挂载到 window 对象，确保 jump-logic.js 可靠访问
+        window.onSuccessfulClick = function() {
+            window.location.href = 'pages/step2-verify.html';
+        };
+    </script>
+</body>
+</html>

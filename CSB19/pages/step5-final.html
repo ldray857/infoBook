@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>生日快乐</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="bg-gradient-to-br from-indigo-950 via-purple-900 to-black h-screen flex items-center justify-center overflow-hidden text-white">
+    <div class="max-w-2xl text-center p-8 backdrop-blur-md bg-white/10 rounded-3xl border border-white/20 shadow-2xl">
+        <div class="mb-8 overflow-hidden rounded-2xl h-64 bg-zinc-800 flex items-center justify-center text-zinc-500 border border-white/10">
+            <img src="../assets/images/头像.jpg" alt="合照占位" class="w-full h-full object-cover opacity-100">
+        </div>
+        
+        <h1 class="text-4xl font-black text-yellow-400 mb-6 tracking-[0.2em]">CSB 19 岁生日快乐！</h1>
+        
+        <p class="text-lg leading-relaxed text-zinc-200 mb-10 text-left px-4">
+            不搞抽象了，恭喜你今天进入19岁<br>
+            愿你的未来：<br>
+            门门满绩，保研无忧<br>
+            百鹿不死，百吃不胖<br>
+            游戏把把赢，有福天天享<br>
+            
+        </p>
+
+        <button id="fireBtn" onclick="launchCelebration()" class="px-12 py-4 bg-yellow-500 hover:bg-yellow-400 text-black font-black rounded-full text-xl shadow-[0_0_40px_rgba(234,179,8,0.4)] transition-all">
+            🦌 点击开鹿 🦌
+        </button>
+    </div>
+
+    <script src="../js/fireworks.js"></script>
+    <script>
+        // 可以在此处添加额外的交互，例如点击后修改按钮文案
+        const btn = document.getElementById('fireBtn');
+        btn.addEventListener('click', () => {
+            btn.innerText = "🎉 生日快乐，岁岁平安！ 🎉";
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+        });
+    </script>
+</body>
+</html>

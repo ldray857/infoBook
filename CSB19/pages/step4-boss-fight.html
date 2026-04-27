@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title> 东北雨</title>
+    <link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <link rel="stylesheet" href="../css/glitch.css"> 
+</head>
+<body class="bg-black text-white flex flex-col items-center justify-center h-screen overflow-hidden">
+    <div class="nes-container is-dark with-title w-[500px]">
+        <p class="title">FINAL BOSS: 带派粉条东北常小雨</p>
+        <div class="text-center py-10">
+            <p class="text-red-500 mb-2">HP: <span id="hp">9178</span> / 9178</p>
+            
+            <progress class="nes-progress is-error w-full mb-10" value="9178" max="9178" id="hp-bar"></progress>
+            
+            <div id="boss" class="text-[120px] cursor-pointer hover:scale-110 transition-transform active:scale-95 select-none" onclick="hit()">
+                91
+            </div>
+            
+            <p class="mt-10 text-xs text-gray-400 nes-font">狂点数字，击败老蒯</p>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        let hp = 9178;
+        function hit() {
+            if(hp <= 0) return;
+            
+            // 每次点击扣除约 789 点血
+            hp = Math.floor(hp - 789.1);
+            
+            // 确保血量不会变成负数
+            if (hp < 0) hp = 0;
+
+            // 更新 UI
+            document.getElementById('hp').innerText = hp;
+            document.getElementById('hp-bar').value = hp; // 现在 hp 的范围在 0-9178 之间，血条会随之减少
+            
+            // 调用 main.js 中封装的震动函数
+            if (window.App && typeof App.shakeScreen === 'function') {
+                App.shakeScreen(100); 
+            }
+
+            if(hp <= 0) {
+                document.getElementById('boss').innerText = "🎂";
+                setTimeout(() => {
+                    window.location.href = 'step5-final.html';
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>

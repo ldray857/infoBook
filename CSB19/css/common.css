@@ -1,0 +1,40 @@
+/* 引入中文字体 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+
+:root {
+    --sys-blue: #0078D7;
+    --sys-black: #0a0a0a;
+    --boss-red: #ff0033;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background-color: var(--sys-black);
+    color: white;
+    /* 禁止选中文字，防止整蛊穿帮 */
+    user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden; /* 禁止滚动条出现 */
+    cursor: default;
+}
+
+/* 通用渐变背景 - 用于最终关卡 */
+.bg-final {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #000000 100%);
+}
+
+/* 按钮基础动效 */
+button {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
